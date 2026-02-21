@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+venv/
+env/
+.venv/
+
+# FPGA build outputs
+firmware/fpga/**/build/
+firmware/fpga/**/*.bit
+firmware/fpga/**/*.bin
+firmware/fpga/**/vivado_project/
+*.jou
+*.log
+*.str
+*.xpr
+.Xil/
+
+# ESP32 build
+firmware/esp32/build/
+firmware/esp32/sdkconfig.old
+
+# KiCad
+hardware/**/*-backups/
+hardware/**/*.kicad_prl
+hardware/**/*.kicad_pcb-bak
+hardware/**/*.sch-bak
+hardware/**/fp-info-cache
+hardware/**/_autosave-*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (too large for git)
+data/raw/
+*.bin
+*.dat
+*.hdf5
+!software/simulation/*.bin
+
+# Datasheets (copyright)
+docs/datasheets/*.pdf
