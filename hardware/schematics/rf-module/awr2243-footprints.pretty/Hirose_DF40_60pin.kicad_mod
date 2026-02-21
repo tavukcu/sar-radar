@@ -1,0 +1,648 @@
+(footprint "Hirose_DF40_60pin"
+	(version 20240108)
+	(generator "hand_created")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "Hirose DF40C-60DP-0.4V(51), 60-pin board-to-board connector, 0.4mm pitch, 2 rows x 30 pins")
+	(tags "connector board-to-board hirose df40 0.4mm 60pin")
+	(attr smd)
+	(fp_text reference "REF**"
+		(at 0 -2.8)
+		(layer "F.SilkS")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+		(uuid "a1b2c3d4-0001-4000-8000-000000000001")
+	)
+	(fp_text value "Hirose_DF40_60pin"
+		(at 0 2.8)
+		(layer "F.Fab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+		(uuid "a1b2c3d4-0002-4000-8000-000000000002")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0)
+		(layer "F.Fab")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+		(uuid "a1b2c3d4-0003-4000-8000-000000000003")
+	)
+
+	;; Silkscreen outline (F.SilkS)
+	;; Top edge
+	(fp_line
+		(start -6.5 -1.5)
+		(end 6.5 -1.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b1b2c3d4-0001-4000-8000-000000000001")
+	)
+	;; Bottom edge
+	(fp_line
+		(start -6.5 1.5)
+		(end 6.5 1.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b1b2c3d4-0002-4000-8000-000000000002")
+	)
+	;; Left edge
+	(fp_line
+		(start -6.5 -1.5)
+		(end -6.5 1.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b1b2c3d4-0003-4000-8000-000000000003")
+	)
+	;; Right edge
+	(fp_line
+		(start 6.5 -1.5)
+		(end 6.5 1.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b1b2c3d4-0004-4000-8000-000000000004")
+	)
+	;; Pin 1 marker - triangle on silkscreen
+	(fp_poly
+		(pts
+			(xy -6.3 1.8)
+			(xy -5.9 1.8)
+			(xy -6.1 2.1)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.SilkS")
+		(uuid "b1b2c3d4-0005-4000-8000-000000000005")
+	)
+
+	;; Fab layer body outline (F.Fab)
+	(fp_line
+		(start -6.5 -1.2)
+		(end 6.5 -1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c1b2c3d4-0001-4000-8000-000000000001")
+	)
+	(fp_line
+		(start 6.5 -1.2)
+		(end 6.5 1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c1b2c3d4-0002-4000-8000-000000000002")
+	)
+	(fp_line
+		(start 6.5 1.2)
+		(end -6.5 1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c1b2c3d4-0003-4000-8000-000000000003")
+	)
+	(fp_line
+		(start -6.5 1.2)
+		(end -6.5 -1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c1b2c3d4-0004-4000-8000-000000000004")
+	)
+	;; Pin 1 indicator on fab layer - chamfered corner
+	(fp_line
+		(start -6.5 0.8)
+		(end -6.1 1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c1b2c3d4-0005-4000-8000-000000000005")
+	)
+
+	;; Courtyard (F.CrtYd) - 0.25mm beyond all pads
+	;; Pads extend to: X +/-7.3mm (mount pad edge), Y +/-1.55mm (pad edge)
+	(fp_rect
+		(start -7.55 -1.8)
+		(end 7.55 1.8)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d1b2c3d4-0001-4000-8000-000000000001")
+	)
+
+	;; ============================================================
+	;; Row 1 (bottom): Pins 1-30, Y = +0.75mm
+	;; X positions: pin N at X = -5.8 + (N-1) * 0.4 mm
+	;; ============================================================
+
+	;; Pin 1: X = -5.800
+	(pad "1" smd rect
+		(at -5.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0001-4000-8000-000000000001")
+	)
+	;; Pin 2: X = -5.400
+	(pad "2" smd rect
+		(at -5.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0002-4000-8000-000000000002")
+	)
+	;; Pin 3: X = -5.000
+	(pad "3" smd rect
+		(at -5.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0003-4000-8000-000000000003")
+	)
+	;; Pin 4: X = -4.600
+	(pad "4" smd rect
+		(at -4.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0004-4000-8000-000000000004")
+	)
+	;; Pin 5: X = -4.200
+	(pad "5" smd rect
+		(at -4.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0005-4000-8000-000000000005")
+	)
+	;; Pin 6: X = -3.800
+	(pad "6" smd rect
+		(at -3.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0006-4000-8000-000000000006")
+	)
+	;; Pin 7: X = -3.400
+	(pad "7" smd rect
+		(at -3.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0007-4000-8000-000000000007")
+	)
+	;; Pin 8: X = -3.000
+	(pad "8" smd rect
+		(at -3.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0008-4000-8000-000000000008")
+	)
+	;; Pin 9: X = -2.600
+	(pad "9" smd rect
+		(at -2.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0009-4000-8000-000000000009")
+	)
+	;; Pin 10: X = -2.200
+	(pad "10" smd rect
+		(at -2.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0010-4000-8000-000000000010")
+	)
+	;; Pin 11: X = -1.800
+	(pad "11" smd rect
+		(at -1.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0011-4000-8000-000000000011")
+	)
+	;; Pin 12: X = -1.400
+	(pad "12" smd rect
+		(at -1.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0012-4000-8000-000000000012")
+	)
+	;; Pin 13: X = -1.000
+	(pad "13" smd rect
+		(at -1.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0013-4000-8000-000000000013")
+	)
+	;; Pin 14: X = -0.600
+	(pad "14" smd rect
+		(at -0.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0014-4000-8000-000000000014")
+	)
+	;; Pin 15: X = -0.200
+	(pad "15" smd rect
+		(at -0.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0015-4000-8000-000000000015")
+	)
+	;; Pin 16: X = 0.200
+	(pad "16" smd rect
+		(at 0.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0016-4000-8000-000000000016")
+	)
+	;; Pin 17: X = 0.600
+	(pad "17" smd rect
+		(at 0.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0017-4000-8000-000000000017")
+	)
+	;; Pin 18: X = 1.000
+	(pad "18" smd rect
+		(at 1.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0018-4000-8000-000000000018")
+	)
+	;; Pin 19: X = 1.400
+	(pad "19" smd rect
+		(at 1.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0019-4000-8000-000000000019")
+	)
+	;; Pin 20: X = 1.800
+	(pad "20" smd rect
+		(at 1.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0020-4000-8000-000000000020")
+	)
+	;; Pin 21: X = 2.200
+	(pad "21" smd rect
+		(at 2.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0021-4000-8000-000000000021")
+	)
+	;; Pin 22: X = 2.600
+	(pad "22" smd rect
+		(at 2.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0022-4000-8000-000000000022")
+	)
+	;; Pin 23: X = 3.000
+	(pad "23" smd rect
+		(at 3.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0023-4000-8000-000000000023")
+	)
+	;; Pin 24: X = 3.400
+	(pad "24" smd rect
+		(at 3.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0024-4000-8000-000000000024")
+	)
+	;; Pin 25: X = 3.800
+	(pad "25" smd rect
+		(at 3.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0025-4000-8000-000000000025")
+	)
+	;; Pin 26: X = 4.200
+	(pad "26" smd rect
+		(at 4.2 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0026-4000-8000-000000000026")
+	)
+	;; Pin 27: X = 4.600
+	(pad "27" smd rect
+		(at 4.6 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0027-4000-8000-000000000027")
+	)
+	;; Pin 28: X = 5.000
+	(pad "28" smd rect
+		(at 5.0 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0028-4000-8000-000000000028")
+	)
+	;; Pin 29: X = 5.400
+	(pad "29" smd rect
+		(at 5.4 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0029-4000-8000-000000000029")
+	)
+	;; Pin 30: X = 5.800
+	(pad "30" smd rect
+		(at 5.8 0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000001-0030-4000-8000-000000000030")
+	)
+
+	;; ============================================================
+	;; Row 2 (top): Pins 31-60, Y = -0.75mm
+	;; X positions: pin N at X = -5.8 + (N-31) * 0.4 mm
+	;; ============================================================
+
+	;; Pin 31: X = -5.800
+	(pad "31" smd rect
+		(at -5.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0001-4000-8000-000000000031")
+	)
+	;; Pin 32: X = -5.400
+	(pad "32" smd rect
+		(at -5.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0002-4000-8000-000000000032")
+	)
+	;; Pin 33: X = -5.000
+	(pad "33" smd rect
+		(at -5.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0003-4000-8000-000000000033")
+	)
+	;; Pin 34: X = -4.600
+	(pad "34" smd rect
+		(at -4.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0004-4000-8000-000000000034")
+	)
+	;; Pin 35: X = -4.200
+	(pad "35" smd rect
+		(at -4.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0005-4000-8000-000000000035")
+	)
+	;; Pin 36: X = -3.800
+	(pad "36" smd rect
+		(at -3.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0006-4000-8000-000000000036")
+	)
+	;; Pin 37: X = -3.400
+	(pad "37" smd rect
+		(at -3.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0007-4000-8000-000000000037")
+	)
+	;; Pin 38: X = -3.000
+	(pad "38" smd rect
+		(at -3.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0008-4000-8000-000000000038")
+	)
+	;; Pin 39: X = -2.600
+	(pad "39" smd rect
+		(at -2.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0009-4000-8000-000000000039")
+	)
+	;; Pin 40: X = -2.200
+	(pad "40" smd rect
+		(at -2.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0010-4000-8000-000000000040")
+	)
+	;; Pin 41: X = -1.800
+	(pad "41" smd rect
+		(at -1.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0011-4000-8000-000000000041")
+	)
+	;; Pin 42: X = -1.400
+	(pad "42" smd rect
+		(at -1.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0012-4000-8000-000000000042")
+	)
+	;; Pin 43: X = -1.000
+	(pad "43" smd rect
+		(at -1.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0013-4000-8000-000000000043")
+	)
+	;; Pin 44: X = -0.600
+	(pad "44" smd rect
+		(at -0.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0014-4000-8000-000000000044")
+	)
+	;; Pin 45: X = -0.200
+	(pad "45" smd rect
+		(at -0.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0015-4000-8000-000000000045")
+	)
+	;; Pin 46: X = 0.200
+	(pad "46" smd rect
+		(at 0.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0016-4000-8000-000000000046")
+	)
+	;; Pin 47: X = 0.600
+	(pad "47" smd rect
+		(at 0.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0017-4000-8000-000000000047")
+	)
+	;; Pin 48: X = 1.000
+	(pad "48" smd rect
+		(at 1.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0018-4000-8000-000000000048")
+	)
+	;; Pin 49: X = 1.400
+	(pad "49" smd rect
+		(at 1.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0019-4000-8000-000000000049")
+	)
+	;; Pin 50: X = 1.800
+	(pad "50" smd rect
+		(at 1.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0020-4000-8000-000000000050")
+	)
+	;; Pin 51: X = 2.200
+	(pad "51" smd rect
+		(at 2.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0021-4000-8000-000000000051")
+	)
+	;; Pin 52: X = 2.600
+	(pad "52" smd rect
+		(at 2.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0022-4000-8000-000000000052")
+	)
+	;; Pin 53: X = 3.000
+	(pad "53" smd rect
+		(at 3.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0023-4000-8000-000000000053")
+	)
+	;; Pin 54: X = 3.400
+	(pad "54" smd rect
+		(at 3.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0024-4000-8000-000000000054")
+	)
+	;; Pin 55: X = 3.800
+	(pad "55" smd rect
+		(at 3.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0025-4000-8000-000000000055")
+	)
+	;; Pin 56: X = 4.200
+	(pad "56" smd rect
+		(at 4.2 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0026-4000-8000-000000000056")
+	)
+	;; Pin 57: X = 4.600
+	(pad "57" smd rect
+		(at 4.6 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0027-4000-8000-000000000057")
+	)
+	;; Pin 58: X = 5.000
+	(pad "58" smd rect
+		(at 5.0 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0028-4000-8000-000000000058")
+	)
+	;; Pin 59: X = 5.400
+	(pad "59" smd rect
+		(at 5.4 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0029-4000-8000-000000000059")
+	)
+	;; Pin 60: X = 5.800
+	(pad "60" smd rect
+		(at 5.8 -0.75)
+		(size 0.2 0.8)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e0000002-0030-4000-8000-000000000060")
+	)
+
+	;; ============================================================
+	;; Mounting / Shield pads (MP1-MP4) at corners
+	;; Located outside pin array, 0.6 x 1.0 mm
+	;; ============================================================
+
+	;; MP1: bottom-left corner
+	(pad "MP1" smd rect
+		(at -7.0 0.75)
+		(size 0.6 1.0)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "f0000001-0001-4000-8000-000000000001")
+	)
+	;; MP2: bottom-right corner
+	(pad "MP2" smd rect
+		(at 7.0 0.75)
+		(size 0.6 1.0)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "f0000001-0002-4000-8000-000000000002")
+	)
+	;; MP3: top-left corner
+	(pad "MP3" smd rect
+		(at -7.0 -0.75)
+		(size 0.6 1.0)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "f0000001-0003-4000-8000-000000000003")
+	)
+	;; MP4: top-right corner
+	(pad "MP4" smd rect
+		(at 7.0 -0.75)
+		(size 0.6 1.0)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "f0000001-0004-4000-8000-000000000004")
+	)
+
+	;; 3D model placeholder
+	(model "${KICAD8_3DMODEL_DIR}/Connector_Hirose.3dshapes/Hirose_DF40C-60DP-0.4V_51.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

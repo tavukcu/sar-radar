@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "filename": "rf-module.kicad_pro",
+    "version": 1
+  },
+  "project": {
+    "created": "2026-02-21 00:00:00",
+    "meta": {
+      "filename": "rf-module.kicad_pro"
+    },
+    "net_settings": {
+      "classes": [
+        {
+          "bus_width": 12,
+          "clearance": 0.1,
+          "diff_pair_gap": 0.1,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.1,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.15,
+          "name": "Default",
+          "number": 0,
+          "pcb_color": "rgba(0, 0, 0, 0.000)",
+          "schematic_color": "rgba(0, 0, 0, 0.000)",
+          "track_width": 0.15,
+          "via_diameter": 0.5,
+          "via_drill": 0.25,
+          "wire_width": 6
+        },
+        {
+          "bus_width": 12,
+          "clearance": 0.15,
+          "diff_pair_gap": 0.1,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.1,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.15,
+          "name": "RF_50ohm",
+          "number": 1,
+          "pcb_color": "rgba(255, 0, 0, 1.000)",
+          "schematic_color": "rgba(255, 0, 0, 1.000)",
+          "track_width": 0.15,
+          "via_diameter": 0.5,
+          "via_drill": 0.25,
+          "wire_width": 6
+        },
+        {
+          "bus_width": 12,
+          "clearance": 0.15,
+          "diff_pair_gap": 0.1,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.1,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.15,
+          "name": "LVDS_100ohm",
+          "number": 2,
+          "pcb_color": "rgba(0, 0, 255, 1.000)",
+          "schematic_color": "rgba(0, 0, 255, 1.000)",
+          "track_width": 0.1,
+          "via_diameter": 0.5,
+          "via_drill": 0.25,
+          "wire_width": 6
+        },
+        {
+          "bus_width": 12,
+          "clearance": 0.2,
+          "diff_pair_gap": 0.0,
+          "diff_pair_via_gap": 0.0,
+          "diff_pair_width": 0.0,
+          "line_style": 0,
+          "microvia_diameter": 0.0,
+          "microvia_drill": 0.0,
+          "name": "Power",
+          "number": 3,
+          "pcb_color": "rgba(0, 128, 0, 1.000)",
+          "schematic_color": "rgba(0, 128, 0, 1.000)",
+          "track_width": 0.3,
+          "via_diameter": 0.6,
+          "via_drill": 0.3,
+          "wire_width": 6
+        }
+      ],
+      "meta": {
+        "version": 3
+      }
+    },
+    "schematic": {
+      "legacy_lib_dir": "",
+      "legacy_lib_list": []
+    },
+    "sheets": [
+      [
+        "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
+        "Root"
+      ]
+    ],
+    "text_variables": {
+      "TITLE": "AWR2243 77GHz RF Radar Module",
+      "REVISION": "1.0",
+      "COMPANY": "SAR Radar Project",
+      "DATE": "2026-02-21"
+    },
+    "libraries": {
+      "pinned_symbol_libs": [
+        "awr2243-symbols"
+      ],
+      "pinned_footprint_libs": [
+        "awr2243-footprints"
+      ]
+    },
+    "board": {
+      "design_settings": {
+        "defaults": {
+          "board_outline_line_width": 0.05,
+          "copper_line_width": 0.1,
+          "copper_text_italic": false,
+          "copper_text_size_h": 1.0,
+          "copper_text_size_v": 1.0,
+          "copper_text_thickness": 0.15,
+          "copper_text_upright": false,
+          "other_line_width": 0.1,
+          "other_text_italic": false,
+          "other_text_size_h": 1.0,
+          "other_text_size_v": 1.0,
+          "other_text_thickness": 0.15,
+          "other_text_upright": false,
+          "pads": {
+            "drill": 0.25,
+            "height": 0.5,
+            "width": 0.5
+          },
+          "silk_line_width": 0.1,
+          "silk_text_italic": false,
+          "silk_text_size_h": 0.8,
+          "silk_text_size_v": 0.8,
+          "silk_text_thickness": 0.1,
+          "silk_text_upright": false,
+          "zones": {
+            "min_clearance": 0.1
+          }
+        },
+        "diff_pair_dimensions": [
+          {
+            "gap": 0.1,
+            "via_gap": 0.25,
+            "width": 0.1
+          }
+        ],
+        "drc_exclusions": [],
+        "rules": {
+          "max_error": 0.005,
+          "min_clearance": 0.1,
+          "min_connection_width": 0.0,
+          "min_copper_edge_clearance": 0.2,
+          "min_hole_clearance": 0.15,
+          "min_hole_to_hole": 0.15,
+          "min_microvia_diameter": 0.3,
+          "min_microvia_drill": 0.15,
+          "min_resolved_spokes": 2,
+          "min_silk_clearance": 0.05,
+          "min_text_height": 0.5,
+          "min_text_thickness": 0.08,
+          "min_through_hole_diameter": 0.25,
+          "min_track_width": 0.1,
+          "min_via_annular_width": 0.125,
+          "min_via_diameter": 0.5,
+          "solder_mask_to_copper_clearance": 0.05,
+          "use_height_for_length_calcs": true
+        },
+        "teardrop_options": [
+          {
+            "td_onpadsmd": true,
+            "td_onroundshapesonly": false,
+            "td_ontrackend": false,
+            "td_onviapad": true
+          }
+        ],
+        "track_widths": [
+          0.0,
+          0.1,
+          0.15,
+          0.2,
+          0.3,
+          0.5
+        ],
+        "tuning_pattern_settings": {
+          "diff_pair_defaults": {
+            "corner_radius_percentage": 80,
+            "corner_style": 1,
+            "max_amplitude": 1.0,
+            "min_amplitude": 0.2,
+            "single_sided": false,
+            "spacing": 0.6
+          },
+          "diff_pair_skew_defaults": {
+            "corner_radius_percentage": 80,
+            "corner_style": 1,
+            "max_amplitude": 1.0,
+            "min_amplitude": 0.2,
+            "single_sided": false,
+            "spacing": 0.6
+          },
+          "single_track_defaults": {
+            "corner_radius_percentage": 80,
+            "corner_style": 1,
+            "max_amplitude": 1.0,
+            "min_amplitude": 0.2,
+            "single_sided": false,
+            "spacing": 0.6
+          }
+        },
+        "via_dimensions": [
+          {
+            "diameter": 0.0,
+            "drill": 0.0
+          },
+          {
+            "diameter": 0.5,
+            "drill": 0.25
+          },
+          {
+            "diameter": 0.6,
+            "drill": 0.3
+          }
+        ],
+        "zones_allow_external_fillets": false
+      },
+      "ipc2581": {
+        "dist": "",
+        "distpn": "",
+        "internal_id": "",
+        "mfg": "",
+        "mpn": ""
+      },
+      "layer_pairs": [],
+      "layer_presets": [],
+      "layers": {
+        "F.Cu": "signal",
+        "B.Cu": "signal"
+      }
+    }
+  }
+}

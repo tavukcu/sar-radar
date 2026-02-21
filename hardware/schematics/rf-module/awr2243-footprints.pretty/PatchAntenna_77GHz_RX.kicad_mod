@@ -1,0 +1,298 @@
+(footprint "PatchAntenna_77GHz_RX"
+	(version 20240108)
+	(generator "hand-crafted")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "77 GHz RX microstrip patch antenna on Rogers RO4350B (er=3.66, h=0.254mm). Patch 1.45x0.93mm, inset-fed 50-ohm microstrip.")
+	(tags "antenna patch 77GHz mmWave RX SAR radar RO4350B")
+	(property "Reference" "REF**"
+		(at 0 -1.5 0)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0001-4000-8000-000000000001")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Value" "PatchAntenna_77GHz_RX"
+		(at 0 3.0 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0002-4000-8000-000000000002")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(attr smd)
+	(zone_connect 0)
+
+	;; ============================================================
+	;; Patch radiator on F.Cu as fp_poly
+	;; 1.45mm (W) x 0.93mm (L) with inset feed notch at bottom
+	;; Origin at patch center. Feed extends downward (+Y).
+	;; Inset: depth=0.25mm, gap=0.1mm each side of 0.15mm feed line
+	;; Polygon traces patch outline clockwise incorporating notch.
+	;; ============================================================
+	(fp_poly
+		(pts
+			;; Top-left corner
+			(xy -0.725 -0.465)
+			;; Top-right corner
+			(xy 0.725 -0.465)
+			;; Bottom-right corner
+			(xy 0.725 0.465)
+			;; Right notch entrance (outer edge)
+			(xy 0.175 0.465)
+			;; Right notch inner top
+			(xy 0.175 0.215)
+			;; Right edge of feed line at notch ceiling
+			(xy 0.075 0.215)
+			;; Right edge of feed line at patch bottom
+			(xy 0.075 0.465)
+			;; Left edge of feed line at patch bottom
+			(xy -0.075 0.465)
+			;; Left edge of feed line at notch ceiling
+			(xy -0.075 0.215)
+			;; Left notch inner top
+			(xy -0.175 0.215)
+			;; Left notch entrance (outer edge)
+			(xy -0.175 0.465)
+			;; Bottom-left corner
+			(xy -0.725 0.465)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Cu")
+		(uuid "a1b2c3d4-0010-4000-8000-000000000010")
+	)
+
+	;; ============================================================
+	;; 50-ohm feed line on F.Cu
+	;; Width: 0.15mm, Length: 1.5mm
+	;; From bottom of patch (Y=0.465) to pad (Y=1.965)
+	;; ============================================================
+	(fp_poly
+		(pts
+			(xy -0.075 0.465)
+			(xy 0.075 0.465)
+			(xy 0.075 1.965)
+			(xy -0.075 1.965)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Cu")
+		(uuid "a1b2c3d4-0011-4000-8000-000000000011")
+	)
+
+	;; ============================================================
+	;; SMD Pad 1 at end of feed line
+	;; Center at (0, 1.965), size 0.3 x 0.3 mm
+	;; ============================================================
+	(pad "1" smd rect
+		(at 0 1.965)
+		(size 0.3 0.3)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "a1b2c3d4-0020-4000-8000-000000000020")
+	)
+
+	;; ============================================================
+	;; Solder mask opening over entire patch and feed area (F.Mask)
+	;; Exposes copper to prevent mask loss at 77 GHz.
+	;; Rectangle covers patch + feed line region with margin.
+	;; From (-0.825, -0.565) to (0.825, 1.865)
+	;; (0.1mm margin around patch, stops before pad which has own mask)
+	;; ============================================================
+	(fp_poly
+		(pts
+			(xy -0.825 -0.565)
+			(xy 0.825 -0.565)
+			(xy 0.825 1.865)
+			(xy -0.825 1.865)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Mask")
+		(uuid "a1b2c3d4-0030-4000-8000-000000000030")
+	)
+
+	;; ============================================================
+	;; Ground plane keepout on B.Cu beneath the patch
+	;; Prevents copper pour on back side under the radiating element.
+	;; Covers patch footprint with 0.2mm margin.
+	;; ============================================================
+	(zone
+		(net 0)
+		(net_name "")
+		(layer "B.Cu")
+		(uuid "a1b2c3d4-0040-4000-8000-000000000040")
+		(name "RX_no_ground")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads not_allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy -0.925 -0.665)
+				(xy 0.925 -0.665)
+				(xy 0.925 2.065)
+				(xy -0.925 2.065)
+			)
+		)
+	)
+
+	;; ============================================================
+	;; Courtyard: 3.0 x 2.5 mm
+	;; Centered at (0, 0.75) to cover patch + feed line
+	;; From (-1.5, -0.5) to (1.5, 2.0)
+	;; ============================================================
+	(fp_rect
+		(start -1.5 -0.5)
+		(end 1.5 2.0)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-0050-4000-8000-000000000050")
+	)
+
+	;; ============================================================
+	;; Fabrication layer: patch outline
+	;; ============================================================
+	(fp_rect
+		(start -0.725 -0.465)
+		(end 0.725 0.465)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0060-4000-8000-000000000060")
+	)
+
+	;; Feed line outline on Fab
+	(fp_rect
+		(start -0.075 0.465)
+		(end 0.075 1.965)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0061-4000-8000-000000000061")
+	)
+
+	;; Inset notch outlines on Fab (left notch)
+	(fp_rect
+		(start -0.175 0.215)
+		(end -0.075 0.465)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0062-4000-8000-000000000062")
+	)
+
+	;; Inset notch outlines on Fab (right notch)
+	(fp_rect
+		(start 0.075 0.215)
+		(end 0.175 0.465)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0063-4000-8000-000000000063")
+	)
+
+	;; "RX" label on Fab layer centered on patch
+	(fp_text user "RX"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0070-4000-8000-000000000070")
+		(effects
+			(font
+				(size 0.4 0.4)
+				(thickness 0.06)
+			)
+		)
+	)
+
+	;; Antenna polarization indicator on Fab layer
+	(fp_line
+		(start 0 -0.465)
+		(end 0 -0.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0071-4000-8000-000000000071")
+	)
+	(fp_line
+		(start -0.1 -0.6)
+		(end 0 -0.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0072-4000-8000-000000000072")
+	)
+	(fp_line
+		(start 0.1 -0.6)
+		(end 0 -0.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0073-4000-8000-000000000073")
+	)
+
+	;; ============================================================
+	;; 3D model placeholder
+	;; ============================================================
+	(model "${KIPRJMOD}/3dmodels/PatchAntenna_77GHz_RX.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

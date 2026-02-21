@@ -1,0 +1,318 @@
+(footprint "PatchAntenna_77GHz_TX"
+	(version 20240108)
+	(generator "hand-crafted")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "77 GHz TX microstrip patch antenna on Rogers RO4350B (er=3.66, h=0.254mm). Patch W=1.45mm L=0.93mm, inset-fed 50-ohm microstrip. Ground plane cutout required on B.Cu beneath patch area.")
+	(tags "antenna patch 77GHz mmWave TX SAR radar RO4350B")
+	(property "Reference" "REF**"
+		(at 0 -1.6 0)
+		(layer "F.SilkS")
+		(uuid "a1b2c3d4-0001-4000-8000-000000000001")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(property "Value" "PatchAntenna_77GHz_TX"
+		(at 0 1.6 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-0002-4000-8000-000000000002")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0003-4000-8000-000000000003")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0004-4000-8000-000000000004")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(property "Description" "77 GHz TX patch antenna, RO4350B substrate, inset-fed 50-ohm"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a1b2c3d4-0005-4000-8000-000000000005")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(attr smd)
+
+	;; ============================================================
+	;; PATCH RADIATOR WITH INSET FEED NOTCHES on F.Cu
+	;; ============================================================
+	;; Patch: 1.45mm (W, x-axis) x 0.93mm (L, y-axis), centered at origin.
+	;; Inset feed enters from bottom edge (y = -0.465).
+	;; Two notch slots cut into patch: each 0.1mm wide, 0.25mm deep.
+	;; Feed line 0.15mm wide centered at x=0.
+	;; Left notch:  x [-0.175, -0.075], y [-0.465, -0.215]
+	;; Right notch: x [+0.075, +0.175], y [-0.465, -0.215]
+	;;
+	;; Polygon traced CCW starting from top-left corner of patch:
+	;;   Top edge -> right edge -> bottom-right corner ->
+	;;   along bottom to right notch outer edge -> down into notch ->
+	;;   across notch bottom -> up out of notch -> across feed gap ->
+	;;   down into left notch -> across left notch bottom ->
+	;;   up out of left notch -> along bottom to bottom-left corner ->
+	;;   left edge back to start.
+
+	(fp_poly
+		(pts
+			;; Top-left corner
+			(xy -0.725 -0.465)
+			;; Top-right corner
+			(xy 0.725 -0.465)
+			;; Bottom-right corner
+			(xy 0.725 0.465)
+			;; Bottom edge rightward to right notch outer wall
+			(xy 0.175 0.465)
+			;; Right notch: go up (into patch) along outer wall
+			(xy 0.175 0.215)
+			;; Right notch: across top of notch to inner wall
+			(xy 0.075 0.215)
+			;; Right notch: go back down to bottom edge
+			(xy 0.075 0.465)
+			;; Across the feed line gap to left notch inner wall
+			(xy -0.075 0.465)
+			;; Left notch: go up (into patch) along inner wall
+			(xy -0.075 0.215)
+			;; Left notch: across top of notch to outer wall
+			(xy -0.175 0.215)
+			;; Left notch: go back down to bottom edge
+			(xy -0.175 0.465)
+			;; Bottom-left corner
+			(xy -0.725 0.465)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Cu")
+		(uuid "a1b2c3d4-1001-4000-8000-000000000001")
+	)
+
+	;; ============================================================
+	;; 50-OHM FEED LINE on F.Cu
+	;; ============================================================
+	;; Width = 0.15mm (50 ohm on RO4350B, h=0.254mm)
+	;; Runs from patch bottom edge (y=0.465) to feed pad (y=1.965)
+	;; Length = 1.5mm
+
+	(fp_poly
+		(pts
+			(xy -0.075 0.465)
+			(xy 0.075 0.465)
+			(xy 0.075 1.965)
+			(xy -0.075 1.965)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Cu")
+		(uuid "a1b2c3d4-1002-4000-8000-000000000002")
+	)
+
+	;; ============================================================
+	;; SMD PAD (Feed Point Connection)
+	;; ============================================================
+	;; Pad 1 at end of feed line for signal connection.
+	;; Size: 0.3mm x 0.3mm SMD pad centered at feed line end.
+
+	(pad "1" smd rect
+		(at 0 1.965)
+		(size 0.3 0.3)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "a1b2c3d4-2001-4000-8000-000000000001")
+	)
+
+	;; ============================================================
+	;; SOLDER MASK OPENING (F.Mask keepout over patch + feed)
+	;; ============================================================
+	;; Expose the entire patch and feed line area — no solder mask
+	;; over the antenna radiating surface. Rectangular opening
+	;; covers patch (1.45 x 0.93) plus feed line area with margin.
+	;; Total area: 1.65mm x 2.63mm (patch + feed + 0.1mm margin all around)
+
+	(fp_poly
+		(pts
+			(xy -0.825 -0.565)
+			(xy 0.825 -0.565)
+			(xy 0.825 2.065)
+			(xy -0.825 2.065)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Mask")
+		(uuid "a1b2c3d4-3001-4000-8000-000000000001")
+	)
+
+	;; ============================================================
+	;; COURTYARD (3.0 x 2.5 mm)
+	;; ============================================================
+	;; Centered to encompass patch + feed line area.
+	;; Center offset: patch center at 0, feed extends to y=1.965
+	;; Geometric center of antenna at approximately y=0.75
+	;; Courtyard: 3.0mm wide x 2.5mm tall, centered at (0, 0.75)
+	;; i.e., y from -0.5 to 2.0... adjusting to cover full structure:
+	;; y from -0.715 to 2.215 would be tight. Use 3.0 x 3.0 or
+	;; center courtyard at midpoint of structure.
+	;; Structure spans: x [-0.725, 0.725], y [-0.465, 1.965]
+	;; Midpoint y = 0.75, span y = 2.43mm
+	;; Courtyard 3.0 x 2.5mm centered at (0, 0.75):
+	;;   x: [-1.5, 1.5], y: [-0.5, 2.0]... that's 3.0 x 2.5
+
+	(fp_rect
+		(start -1.5 -0.5)
+		(end 1.5 2.0)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "a1b2c3d4-4001-4000-8000-000000000001")
+	)
+
+	;; ============================================================
+	;; FAB LAYER - Patch Outline
+	;; ============================================================
+
+	(fp_rect
+		(start -0.725 -0.465)
+		(end 0.725 0.465)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5001-4000-8000-000000000001")
+	)
+
+	;; Feed line outline on Fab
+	(fp_rect
+		(start -0.075 0.465)
+		(end 0.075 1.965)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5002-4000-8000-000000000002")
+	)
+
+	;; Inset notch outlines on Fab (left)
+	(fp_rect
+		(start -0.175 0.215)
+		(end -0.075 0.465)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5003-4000-8000-000000000003")
+	)
+
+	;; Inset notch outlines on Fab (right)
+	(fp_rect
+		(start 0.075 0.215)
+		(end 0.175 0.465)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5004-4000-8000-000000000004")
+	)
+
+	;; "TX" label on Fab layer centered on the patch
+	(fp_text user "TX"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5005-4000-8000-000000000005")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+
+	;; Substrate note on Fab layer
+	(fp_text user "RO4350B εr=3.66 h=0.254mm"
+		(at 0 2.4 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5006-4000-8000-000000000006")
+		(effects
+			(font
+				(size 0.2 0.2)
+				(thickness 0.04)
+			)
+		)
+	)
+
+	;; ============================================================
+	;; NOTES (as text on Fab layer)
+	;; ============================================================
+	;; Ground plane cutout required on B.Cu beneath the patch area.
+	;; Create a keepout zone or copper cutout on B.Cu layer
+	;; spanning at minimum the patch footprint (1.45 x 0.93mm).
+	;; The feed line ground reference starts at the patch edge.
+
+	(fp_text user "NOTE: B.Cu ground cutout\nrequired under patch"
+		(at 0 -1.1 0)
+		(layer "F.Fab")
+		(uuid "a1b2c3d4-5007-4000-8000-000000000007")
+		(effects
+			(font
+				(size 0.15 0.15)
+				(thickness 0.03)
+			)
+		)
+	)
+
+	;; ============================================================
+	;; 3D MODEL placeholder
+	;; ============================================================
+	;; (model "${KIPRJMOD}/3dmodels/PatchAntenna_77GHz_TX.step"
+	;;   (offset (xyz 0 0 0))
+	;;   (scale (xyz 1 1 1))
+	;;   (rotate (xyz 0 0 0))
+	;; )
+)

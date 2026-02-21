@@ -1,0 +1,195 @@
+(version 1)
+
+;; ============================================================
+;; AWR2243 77 GHz RF Module - PCB Design Rules
+;; Substrate: Rogers RO4350B, εr=3.66, tanδ=0.0037
+;; Thickness: 0.254mm (10 mil) core + 35µm (1oz) copper
+;; Layers: 2 (Top: signal+antenna, Bottom: GND plane)
+;; Finish: ENIG (Immersion Gold)
+;; ============================================================
+
+(rule "Min Track Width"
+  (condition "A.Type == 'track'")
+  (constraint track_width (min 0.1mm))
+)
+
+(rule "Min Clearance"
+  (condition "A.Type == 'track' && B.Type == 'track'")
+  (constraint clearance (min 0.1mm))
+)
+
+(rule "Min Via Drill"
+  (condition "A.Type == 'via'")
+  (constraint hole_size (min 0.25mm))
+)
+
+(rule "Min Via Diameter"
+  (condition "A.Type == 'via'")
+  (constraint via_diameter (min 0.5mm))
+)
+
+;; ============================================================
+;; RF 50 Ohm Microstrip Rules
+;; Calculated: W=0.15mm on RO4350B, h=0.254mm, εr=3.66
+;; Zo = 87/sqrt(εr+1.41) * ln(5.98h/(0.8w+t)) ≈ 50Ω
+;; ============================================================
+
+(rule "RF 50ohm Microstrip Width"
+  (condition "A.NetClass == 'RF_50ohm'")
+  (constraint track_width (min 0.14mm) (opt 0.15mm) (max 0.16mm))
+)
+
+(rule "RF 50ohm Clearance"
+  (condition "A.NetClass == 'RF_50ohm'")
+  (constraint clearance (min 0.15mm))
+)
+
+(rule "RF 50ohm No Via"
+  (condition "A.NetClass == 'RF_50ohm' && A.Type == 'via'")
+  (constraint disallow via)
+)
+
+;; ============================================================
+;; LVDS 100 Ohm Differential Pair Rules
+;; Calculated: W=0.1mm, S=0.1mm on RO4350B for Zdiff=100Ω
+;; ============================================================
+
+(rule "LVDS Diff Pair Width"
+  (condition "A.NetClass == 'LVDS_100ohm'")
+  (constraint track_width (min 0.09mm) (opt 0.1mm) (max 0.11mm))
+)
+
+(rule "LVDS Diff Pair Gap"
+  (condition "A.NetClass == 'LVDS_100ohm'")
+  (constraint clearance (min 0.1mm))
+)
+
+(rule "LVDS Diff Pair Skew"
+  (condition "A.NetClass == 'LVDS_100ohm'")
+  (constraint skew (max 0.05mm))
+)
+
+(rule "LVDS Max Length"
+  (condition "A.NetClass == 'LVDS_100ohm'")
+  (constraint length (max 30mm))
+)
+
+;; ============================================================
+;; Power Distribution Rules
+;; ============================================================
+
+(rule "Power Track Width"
+  (condition "A.NetClass == 'Power'")
+  (constraint track_width (min 0.3mm))
+)
+
+(rule "Power Via Drill"
+  (condition "A.NetClass == 'Power' && A.Type == 'via'")
+  (constraint hole_size (min 0.3mm))
+)
+
+(rule "Power Clearance"
+  (condition "A.NetClass == 'Power'")
+  (constraint clearance (min 0.2mm))
+)
+
+;; ============================================================
+;; BGA Rules (AWR2243 specific)
+;; ============================================================
+
+(rule "BGA Pad Clearance"
+  (condition "A.Type == 'pad' && A.Pad_Type == 'smd' && A.Pad_Shape == 'circle' && A.Pad_Size_X <= 0.4mm")
+  (constraint clearance (min 0.1mm))
+)
+
+(rule "BGA Fanout Via"
+  (condition "A.Type == 'via' && A.insideArea('BGA_Fanout')")
+  (constraint hole_size (min 0.2mm) (max 0.25mm))
+  (constraint via_diameter (min 0.4mm) (max 0.5mm))
+)
+
+;; ============================================================
+;; Thermal Via Rules (Exposed Pad)
+;; ============================================================
+
+(rule "Thermal Via Drill"
+  (condition "A.Type == 'via' && A.insideArea('Thermal_Pad')")
+  (constraint hole_size (min 0.3mm) (max 0.3mm))
+  (constraint via_diameter (min 0.6mm) (max 0.6mm))
+)
+
+;; ============================================================
+;; Antenna Area Rules
+;; ============================================================
+
+(rule "Antenna No GND Plane"
+  (condition "A.insideArea('Antenna_Keepout') && A.Layer == 'B.Cu'")
+  (constraint disallow track zone pad via)
+)
+
+(rule "Antenna No Solder Mask"
+  (condition "A.insideArea('Antenna_Keepout') && A.Layer == 'F.Mask'")
+  (constraint disallow zone)
+)
+
+(rule "Antenna Feed Clearance"
+  (condition "A.NetClass == 'RF_50ohm' && A.insideArea('Antenna_Area')")
+  (constraint clearance (min 0.2mm))
+)
+
+;; ============================================================
+;; Via Stitching Rules (Ground Plane Integrity)
+;; λ/20 at 77 GHz ≈ 0.2mm spacing
+;; ============================================================
+
+(rule "Via Stitch Spacing"
+  (condition "A.Type == 'via' && A.Net == 'GND'")
+  (constraint hole_size (min 0.2mm) (max 0.25mm))
+)
+
+;; ============================================================
+;; Edge Clearance Rules
+;; ============================================================
+
+(rule "Track to Edge"
+  (condition "A.Type == 'track'")
+  (constraint edge_clearance (min 0.3mm))
+)
+
+(rule "Via to Edge"
+  (condition "A.Type == 'via'")
+  (constraint edge_clearance (min 0.5mm))
+)
+
+(rule "Component to Edge"
+  (condition "A.Type == 'pad'")
+  (constraint edge_clearance (min 0.5mm))
+)
+
+;; ============================================================
+;; Solder Mask Rules
+;; ============================================================
+
+(rule "Solder Mask Expansion"
+  (condition "A.Type == 'pad'")
+  (constraint solder_mask_margin (min 0.05mm))
+)
+
+(rule "Solder Mask Bridge"
+  (condition "A.Type == 'pad' && B.Type == 'pad'")
+  (constraint solder_mask_margin (min 0.05mm))
+)
+
+;; ============================================================
+;; Silk Screen Rules
+;; ============================================================
+
+(rule "Silk to Pad"
+  (condition "A.Type == 'pad'")
+  (constraint silk_clearance (min 0.15mm))
+)
+
+(rule "Silk Line Width"
+  (condition "A.Layer == 'F.SilkS' || A.Layer == 'B.SilkS'")
+  (constraint silk_clearance (min 0.1mm))
+)
